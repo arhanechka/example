@@ -1,7 +1,7 @@
 <template>
   <div id="app">
      <app-car></app-car>
-    <!-- <h2>{{title}}</h2>
+    <h2>{{title}}</h2>
    
     <app-counter 
     :counter = counter
@@ -10,13 +10,15 @@
     >
     </app-counter>
     <h2> Under Counter</h2>
-    <button @click = addCounter()>Add</button> -->
+    <button @click = addCounter()>Add</button>
   </div>
 </template>
 
 <script>
 import Car from './components/Car'
 import Counter from './components/Counter'
+import {eventBus} from './main'
+
 export default {
   name: 'app',
   data () {
@@ -30,6 +32,12 @@ export default {
     
     appCar: Car,
     appCounter: Counter
+  },
+  created(){
+   
+      eventBus.$on('titleName', ()=>{
+        this.title = this.title.split('').reverse().join('');
+      })
   },
   methods:{
     changeTitle(num){

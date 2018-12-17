@@ -26,8 +26,9 @@ export default {
    },
 methods: {
 titlechange(){
-    this.title = this.title.split('').reverse().join('');
-    this.$emit('namech', this.title)
+    
+   // this.$emit('namech', this.title)
+   eventBus.$emit('titleName')
 },
 updateCar(){
    eventBus.$emit('UppCar')
